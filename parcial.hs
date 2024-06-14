@@ -30,3 +30,24 @@ sumarDigitos :: Int -> Int -> Int
 sumarDigitos n longitud
     | (n > 0) = (n `mod` (10)) ^ longitud + sumarDigitos (n `div` 10) longitud
     | (n <= 0) = 0
+
+{- Parcial 2024 -}
+tParcial :: (Int, Int) -> Int -> String
+tParcial (n, m) c
+    | (n < m) && (n >= 1) && (c > 0) = show n ++ "\t" ++ show (sumatoria n c) ++ "\n" ++ tParcial (n + 1, m) c
+    | (n == m) && (n >= 1) && (c > 0) = show n ++ "\t" ++ show (sumatoria n c)
+    | otherwise = "Error al ingresar los datos"
+
+{- /,% en float, div, mod en int -}
+sumatoria :: Int -> Int -> Float
+sumatoria k c
+    | (k > 1) = (fromIntegral(arriba) / fromIntegral(abajo)) + sumatoria (k - 1) c
+    | (k == 1) = (fromIntegral(arriba) / fromIntegral(abajo))
+    | otherwise = 0
+    where
+        arriba = (k ^ 3) + (5 * c)
+        abajo = (k * 2) + c - 1 
+
+main :: IO ()
+main = do
+    putStrLn (tParcial (2, 4) 3)
