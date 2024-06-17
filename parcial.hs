@@ -51,3 +51,40 @@ sumatoria k c
 main :: IO ()
 main = do
     putStrLn (tParcial (2, 4) 3)
+
+{- 6) Definir una funcion que calcule la suma de los cuadrados de dos numeros
+que recibe como argumentos, usando definiciones locales mediante where -}
+sumaCuadrados :: Int -> Int -> Int
+sumaCuadrados x y = cuadradoX + cuadradoY
+    where
+        cuadradoX = x * x
+        cuadradoY = y * y
+
+{- 12) Implementar una funcion que reciba un numero real y devuelva una tupla
+con su parte entera y sus dos primeros decimales (com numeros enteros) -}
+destrozaReal :: Float -> (Int, Int)
+destrozaReal numero = (entera, decimal)
+    where
+        entera = floor(numero)
+        decimal = floor((numero - fromIntegral(entera)) * 100)
+        {- floor: Redondea hacia abajo al entero más cercano -}
+
+{- 13) Diseñar un funcion que reciba una tupla de numeros enteros y 
+devuelva el cociente y el resto de la division entera, junto con un 
+mensaje de que la operacion se realizo de manera exitosa -}
+division :: (Int, Int) -> String
+division (x, y)
+    | (x /= 0 && y == 0) = "Infinito (x/0)"
+    | (x == 0 && y == 0) = "Indeterminado (0/0)"
+    | otherwise = show (cociente, resto)
+    where
+        cociente = x `div` y
+        resto = x `mod` y
+
+{- 14) Diseñar una funcion que reciba el radio de una circunferencia y 
+devuelva una tupla con la longitud de la circunferencia y el area del circulo -}
+circunferencia :: Float -> (Float, Float)
+circunferencia radio = (longitud, area)
+    where
+        longitud = 2 * pi * radio
+        area = pi * (radio ^ 2)
