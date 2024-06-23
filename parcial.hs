@@ -88,3 +88,6 @@ circunferencia radio = (longitud, area)
     where
         longitud = 2 * pi * radio
         area = pi * (radio ^ 2)
+
+nela :: Int -> Float
+nela x = 3 + 2.0
